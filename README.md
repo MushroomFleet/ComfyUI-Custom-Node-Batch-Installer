@@ -1,4 +1,5 @@
 # ComfyUI Custom Node Batch Installer
+https://www.youtube.com/watch?v=d0gHYTuA2-I
 
 A collection of scripts to simplify the installation of multiple ComfyUI custom nodes and their dependencies. This tool is particularly useful for ComfyUI Portable users but works with standard ComfyUI installations as well.
 
