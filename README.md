@@ -12,6 +12,8 @@ A user-friendly web interface tool to simplify the installation of multiple Comf
 - Virtual environment support to prevent conflicts with system Python
 - Detailed logging for troubleshooting
 - Path validation and repository URL verification
+- Installation progress tracking and completion feedback
+- Comprehensive installation summary with success/failure counts
 - Simple one-click installation process
 
 ## Prerequisites
@@ -50,7 +52,15 @@ project_root/
 5. Add GitHub repository URLs (one per line) in the text area
 6. Click "Save Repository List" to validate URLs and prepare for installation
 7. Click "Install Custom Nodes" to begin the installation process
-8. Monitor the output box for installation progress and any error messages
+8. Monitor the output box for:
+   - Real-time installation progress
+   - Per-repository installation status
+   - Detailed error messages if any issues occur
+   - Final installation summary showing:
+     - Total repositories processed
+     - Number of successful installations
+     - Number of failed installations
+   - Completion confirmation message
 
 ## Example Repository URLs
 
@@ -61,7 +71,26 @@ https://github.com/user/custom-node-repository
 
 ## Logging
 
-The installer creates detailed logs in the project directory with timestamp-based filenames (e.g., `installer_20241206_123456.log`). These logs are useful for troubleshooting installation issues.
+The installer creates detailed logs in the project directory with timestamp-based filenames (e.g., `installer_20241206_123456.log`). These logs contain:
+- All installation steps and their outcomes
+- Real-time progress updates
+- Error messages and warnings
+- Installation summaries
+- Final completion status
+
+This detailed logging is useful for troubleshooting installation issues and verifying successful installations.
+
+## Installation Progress Feedback
+
+The installer now provides clear feedback about the installation process:
+1. Shows which repository is currently being processed (X of Y)
+2. Indicates success or failure for each repository
+3. Displays a final summary with:
+   - Total number of repositories processed
+   - Number of successful installations
+   - Number of failed installations
+4. Confirms completion with a clear message
+5. All progress is logged both to the UI and log files
 
 ## Troubleshooting
 
@@ -95,12 +124,21 @@ The installer creates detailed logs in the project directory with timestamp-base
    - Check if port 7860 is available
    - Look for error messages in the console window
 
+7. **Installation appears stuck**
+   - Check the output window for progress updates
+   - Look at the latest log file for detailed status
+   - Verify your internet connection
+
 ### Checking Logs
 
 If you encounter issues:
 1. Check the console output for immediate error messages
 2. Look for the latest `installer_*.log` file in the project directory
-3. Open the log file with a text editor to view detailed error information
+3. Open the log file with a text editor to view:
+   - Detailed error information
+   - Installation progress
+   - Final installation summary
+   - Completion status
 
 ## Security Notes
 
@@ -108,6 +146,7 @@ If you encounter issues:
 - No public URL sharing is enabled
 - Path validation prevents directory traversal attempts
 - Dependencies are isolated in a virtual environment
+- Repository URLs are validated before processing
 
 ## Contributing
 
