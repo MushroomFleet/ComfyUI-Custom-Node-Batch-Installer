@@ -156,9 +156,6 @@ Feel free to submit issues and enhancement requests! Please include:
 - Relevant log files
 - Your system configuration
 
-## License
-
-[Add your chosen license here]
 
 ## Support
 
