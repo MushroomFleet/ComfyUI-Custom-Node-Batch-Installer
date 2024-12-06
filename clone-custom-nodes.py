@@ -70,20 +70,26 @@ def main():
 
     # Read repository URLs
     urls = read_repo_urls('comfy-repos.txt')
-    print(f"Found {len(urls)} repositories to process")
+    total_repos = len(urls)
+    print(f"Found {total_repos} repositories to process")
+    
+    successful_installs = 0
+    failed_installs = 0
 
     # Process each repository
-    for url in urls:
-        print(f"\nProcessing repository: {url}")
+    for i, url in enumerate(urls, 1):
+        print(f"\nProcessing repository {i}/{total_repos}: {url}")
         
         # Clone the repository
         repo_name = clone_repository(url)
         if not repo_name:
+            failed_installs += 1
             continue
 
         # Find requirements.txt files
         requirements_files = find_requirements_txt(repo_name)
         
+        repo_success = True
         # For each requirements.txt found, copy installation files and run the package preparation script
         for req_file in requirements_files:
             req_dir = os.path.dirname(req_file)
@@ -105,8 +111,23 @@ def main():
                         
                 except subprocess.CalledProcessError as e:
                     print(f"Error running package-preparation.py in {req_dir}: {str(e)}")
+                    repo_success = False
             else:
                 print(f"Skipping installation for {req_dir} due to file copy error")
+                repo_success = False
+        
+        if repo_success:
+            successful_installs += 1
+        else:
+            failed_installs += 1
+
+    # Print final summary
+    print("\n" + "="*50)
+    print("Installation Summary:")
+    print(f"Total repositories processed: {total_repos}")
+    print(f"Successfully installed: {successful_installs}")
+    print(f"Failed installations: {failed_installs}")
+    print("="*50)
 
 if __name__ == "__main__":
     main()
