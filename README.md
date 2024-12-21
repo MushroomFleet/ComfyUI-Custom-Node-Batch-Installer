@@ -1,5 +1,5 @@
 # ComfyUI Custom Node Batch Installer
-![Demo UI](https://raw.githubusercontent.com/MushroomFleet/Mochi1-Video-Dataset-Builder/main/images/demoUI.png)
+![Demo UI](https://raw.githubusercontent.com/MushroomFleet/ComfyUI-Custom-Node-Batch-Installer/main/images/demo-batchInstaller.png)
 
 A user-friendly web interface tool to simplify the installation of multiple ComfyUI custom nodes and their dependencies. This tool works with both standard ComfyUI installations and ComfyUI Portable.
 
